@@ -232,7 +232,7 @@ if "%PKG_NAME%" == "libtorch" (
 
     if not "%cuda_compiler_version%" == "None" (
         sed -e "s/@cf_torch_cuda_arch_list@/%TORCH_CUDA_ARCH_LIST%/g" ^
-            %RECIPE_DIR%\activate.bat > %RECIPE_DIR%\activate-replaced.bat
+            "%RECIPE_DIR:\=/%/activate.bat" > "%RECIPE_DIR%\activate-replaced.bat"
         if %ERRORLEVEL% neq 0 exit 1
 
         mkdir %PREFIX%\etc\conda\activate.d
